@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Angular表达式</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript">
+        /*
+         *$http.get() 发送get请求
+         *语法格式一：
+         *      $http.get(url,{
+         *          params : {"id" : id}
+         *      }).then(function(response){     //请求成功
+         *          response:响应对象封装了响应数据、状态码
+         *      },function(response){           //请求失败
+         *          response：响应对象封装了响应状态码
+         *      });
+         *
+         * 语法格式二：
+         *      $http.get(url).then(function(response){     //请求成功
+         *          response:响应对象封装了响应数据、状态码
+         *      },function(response){           //请求失败
+         *          response：响应对象封装了响应状态码
+         *      });
+         */
+        var myApp = angular.module("myApp",[]);
+        myApp.controller("myController",function ($scope,$http) {
+            $scope.sendGet = function () {
+                $http.get("/data.json").then(function (response) {
+                    $scope.list = response.data;
+                },function (response) {
+                    alert("加载数据失败")
+                });
+            };
+        });
+    </script>
+</head>
+<!-- 指定AngularJS应用的根元素 -->
+<body ng-app="myApp" ng-controller="myController" ng-init="sendGet();">
+    <table border="1">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+        </tr>
+        <tr ng-repeat="user in list">
+            <td>{{$index + 1}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.sex}}</td>
+            <td>{{user.age}}</td>
+        </tr>
+    </table>
+</body>
+</html>

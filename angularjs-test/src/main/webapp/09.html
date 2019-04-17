@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Angular表达式</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript">
+        var myApp = angular.module("myApp",[]);
+        myApp.controller("myController",function ($scope) {
+            /* 定义下拉列表需要的数据变量 */
+            $scope.cities = [{id:1,name:"广州"},
+                {id:2,name:"上海"},
+                {id:3,name:"北京"}];
+        });
+    </script>
+</head>
+<!-- 指定AngularJS应用的根元素 -->
+
+<!-- 语法格式： ng-options = "元素变量.键 as 元素变量.键 for 元素变量 in 集合或数组" -->
+<body ng-app="myApp" ng-controller="myController">
+
+    <!-- 注意：元素变量的哪个属性在前面（第一个），下拉列表的内容就是该属性数据 -->
+    <select ng-model="code" ng-options="city.id as city.name for city in cities">
+        <option value="">==请选择==</option>
+    </select>
+    {{code}}
+
+</body>
+</html>

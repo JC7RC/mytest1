@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <title>Angular表达式</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <script src="js/angular.min.js"></script>
+</head>
+<!-- 指定AngularJS应用的根元素 -->
+
+<!-- 定义模块语法格式：  var 变量名 = angular.module("模块名"，[])； -->
+<!-- 定义控制器语法格式：  模块变量名.controller = ("控制器名"，function（$scope）{})； -->
+
+<script type="text/javascript">
+    /* 定义myApp模块 */
+    var myApp = angular.module("myApp",[]);
+    /* 为myApp模块定义控制器 */
+    myApp.controller("myController",function ($scope) {
+        $scope.add = function () {
+            return parseInt($scope.x) * parseInt($scope.y);
+        };
+    });
+</script>
+
+<body ng-app="myApp" ng-controller="myController">
+
+    x值：<input type="text" ng-model="x"/><br/>
+    y值：<input type="text" ng-model="y"/><br/>
+    <hr/>
+    结果是：{{add()}}
+</body>
+</html>

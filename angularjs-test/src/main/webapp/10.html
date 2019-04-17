@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Angular表达式</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript">
+        /*
+         *$http() 发送get、post请求
+         *语法格式：
+         *      $http({
+         *          method:"get 或 post",   //请求方式
+         *          url: ""                 //请求路径
+         *          params: {}              //请求参数
+         *      }).then(function(response){     //请求成功
+         *          response:响应对象封装了响应数据、状态码
+         *      },function(response){           //请求失败
+         *          response：响应对象封装了响应状态码
+         *      });
+         */
+        var myApp = angular.module("myApp",[]);
+        myApp.controller("myController",function ($scope,$http) {
+            $scope.httpGet = function () {
+                $http({
+                    method: "GET",
+                    url: "/find",
+                    params: {"id": 10}
+                }).then(function (response) {
+                    $scope.user = response.data;
+                }, function (response) {
+                    alert("数据加载失败");
+                });
+            };
+        });
+    </script>
+</head>
+<!-- 指定AngularJS应用的根元素 -->
+<body ng-app="myApp" ng-controller="myController" ng-init="httpGet();">
+    {{user.id}}   --->   {{user.name}}
+</body>
+</html>

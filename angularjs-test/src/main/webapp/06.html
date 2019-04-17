@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Angular表达式</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript">
+        var myApp = angular.module("myApp",[]);
+        myApp.controller("myController",function ($scope) {
+            /* 定义数组 */
+            $scope.list = [100,200,300,400,500,600,700];
+        });
+    </script>
+</head>
+<!-- 指定AngularJS应用的根元素 -->
+
+<!-- ng-repeat：循环 -->
+<body ng-app="myApp" ng-controller="myController">
+   <ul>
+        <li ng-repeat="item in list">
+            {{item}}
+        </li>
+   </ul>
+</body>
+</html>

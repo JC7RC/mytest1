@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Angular表达式</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <script src="js/angular.min.js"></script>
+</head>
+
+<!-- no-model：用于绑定变量 -->
+<body ng-app>
+        <!-- 语法格式：ng-model="变量名" 、ng-model="对象.变量名" -->
+        姓名：<input type="text" ng-model="name"/><br/>
+        年龄：<input type="text" ng-model="age"/><br/>
+        性别：<input type="text" ng-model="sex"/><br/>
+        <hr/>
+        姓名：{{name}} 年龄：{{age}} 性别：{{sex}}
+</body>
+</html>

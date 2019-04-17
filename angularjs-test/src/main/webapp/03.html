@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <title>Angular表达式</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <script src="js/angular.min.js"></script>
+</head>
+
+<!-- ng-init： 对变量进行初始化-->
+<!-- 语法格式：ng-init="变量名=''；变量名=''" -->
+<body ng-app ng-init="name='益达';age='18';sex='青春'">
+
+    姓名：<input type="text" ng-model="name"/><br/>
+    年龄：<input type="text" ng-model="age"/><br/>
+    性别：<input type="text" ng-model="sex"/><br/>
+    <hr/>
+
+    姓名：{{name}}   年龄：{{age}}   性别：{{sex}}
+</body>
+</html>
